@@ -35,7 +35,8 @@ public enum DateTimeUnit {
     DAY_OF_MONTH(       (byte) 5, ISOChronology.getInstanceUTC().dayOfMonth()),
     HOUR_OF_DAY(        (byte) 6, ISOChronology.getInstanceUTC().hourOfDay()),
     MINUTES_OF_HOUR(    (byte) 7, ISOChronology.getInstanceUTC().minuteOfHour()),
-    SECOND_OF_MINUTE(   (byte) 8, ISOChronology.getInstanceUTC().secondOfMinute());
+    SECOND_OF_MINUTE(   (byte) 8, ISOChronology.getInstanceUTC().secondOfMinute()),
+    HALFYEAR(           (byte) 9, Joda.HalfOfYear.getField(ISOChronology.getInstanceUTC()));
 
     private final byte id;
     private final DateTimeField field;
@@ -63,6 +64,8 @@ public enum DateTimeUnit {
             case 6: return HOUR_OF_DAY;
             case 7: return MINUTES_OF_HOUR;
             case 8: return SECOND_OF_MINUTE;
+            case 9: return HALFYEAR;
+            
             default: throw new ElasticsearchException("Unknown date time unit id [" + id + "]");
         }
     }

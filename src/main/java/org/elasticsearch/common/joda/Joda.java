@@ -188,4 +188,28 @@ public class Joda {
             return new OffsetDateTimeField(new DividedDateTimeField(new OffsetDateTimeField(chronology.monthOfYear(), -1), QuarterOfYear, 3), 1);
         }
     };
+    
+    public static final DurationFieldType HalfYears = new DurationFieldType("halfYears") {
+        private static final long serialVersionUID = -8167713675442491871L;
+        
+            public DurationField getField(Chronology chronology) {
+                return new ScaledDurationField(chronology.months(), HalfYears, 6);
+            }
+        };
+        
+        public static final DateTimeFieldType HalfOfYear = new DateTimeFieldType("halfOfYear") {
+            private static final long serialVersionUID = -7624735257266970464L;
+    
+            public DurationFieldType getDurationType() {
+                return HalfYears;
+            }
+    
+            public DurationFieldType getRangeDurationType() {
+                return DurationFieldType.years();
+            }
+    
+            public DateTimeField getField(Chronology chronology) {
+                return new OffsetDateTimeField(new DividedDateTimeField(new OffsetDateTimeField(chronology.monthOfYear(), -1), HalfOfYear, 6), 1);
+            }
+        };
 }

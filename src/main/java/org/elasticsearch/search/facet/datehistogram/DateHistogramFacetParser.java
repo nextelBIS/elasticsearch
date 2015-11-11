@@ -61,6 +61,8 @@ public class DateHistogramFacetParser extends AbstractComponent implements Facet
         dateTimeUnits = MapBuilder.<String, DateTimeUnit>newMapBuilder()
                 .put("year", DateTimeUnit.YEAR_OF_CENTURY)
                 .put("1y", DateTimeUnit.YEAR_OF_CENTURY)
+                .put("halfyear", DateTimeUnit.HALFYEAR)
+                .put("1H", DateTimeUnit.HALFYEAR)
                 .put("quarter", DateTimeUnit.QUARTER)
                 .put("1q", DateTimeUnit.QUARTER)
                 .put("month", DateTimeUnit.MONTH_OF_YEAR)
